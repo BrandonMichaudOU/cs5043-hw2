@@ -5,3 +5,4 @@ results
 outputs
 __pycache__
 wandb
+.idea
