@@ -8,7 +8,7 @@
 #SBATCH --mem=1G
 #SBATCH --output=outputs/hw2_%j_stdout.txt
 #SBATCH --error=outputs/hw2_%j_stderr.txt
-#SBATCH --time=00:05:00
+#SBATCH --time=00:07:00
 #SBATCH --job-name=hw2
 #SBATCH --mail-user=brandondmichaud@ou.edu
 #SBATCH --mail-type=ALL
