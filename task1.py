@@ -9,7 +9,7 @@ def make_plot():
     Lines for training, validation, and test sets shown
     '''
     # Values used for task 1
-    rotations = list(range(0, 20, 2))
+    rotations = range(0, 20, 2)
     Ntraining = [1, 2, 4, 6, 9, 13, 18]
 
     # Create numpy arrays for each set
@@ -17,7 +17,7 @@ def make_plot():
     fvafs_validation = np.empty((len(rotations), len(Ntraining)))
 
     # Loop over each experiment
-    for i, r in rotations:
+    for i, r in enumerate(rotations):
         for j, n in enumerate(Ntraining):
             # Open experiment results and add them to arrays
             with open(f'base__ddtheta_1_hidden_500_250_125_75_36_17_JI_rotation_{r}_Ntraining_{n}_results.pkl', "rb") as fp:
