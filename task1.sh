@@ -17,4 +17,5 @@
 . /home/fagg/tf_setup.sh
 conda activate tf
 
-python hw2_base.py --project 'hw2' --exp_type 'base' --output_type 'ddtheta' --predict_dim 1 --rotation 10 --Ntraining 18 --lrate 0.0001 --activation_hidden 'elu' --activation_out 'linear' --hidden 500 250 125 75 36 17 --epochs 100 --min_delta 0.001 --patience 25 -vv
+python hw2_base.py --project 'hw2' --exp_type 'base' --output_type 'ddtheta' --predict_dim 1 --rotation 10 --Ntraining 18 --lrate 0.0001 --activation_hidden 'elu' --activation_out 'linear' --hidden 500 250 125 75 36 17 --epochs 100 -vv
+# --min_delta 0.001 --patience 25
