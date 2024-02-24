@@ -171,11 +171,11 @@ def generate_fname(args, params_str):
     else:
         predict_str = '%s_%d' % (args.output_type, args.predict_dim)
 
-    if args.L1_regularization is not None:
-        Lx_str = '_L1_%f' % args.L1_regularization
+    if args.l1 is not None:
+        Lx_str = '_L1_%f' % args.l1
         
-    elif args.L2_regularization is not None:
-        Lx_str = '_L2_%f' % args.L2_regularization
+    elif args.l2 is not None:
+        Lx_str = '_L2_%f' % args.l2
     else:
         Lx_str = ''
         
