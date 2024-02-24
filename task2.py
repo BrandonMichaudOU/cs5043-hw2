@@ -30,14 +30,14 @@ def make_plot():
     print(np.shape(avg_fvafs_validation))
 
     # Create line plot
-    # fig = plt.figure()
-    # for i in range(len(dropout)):
-    #     plt.plot(Ntraining, avg_fvafs_validation, label='validation')
-    # plt.ylabel('FVAF')
-    # plt.xlabel('Training Folds')
-    # plt.title('FVAF vs Training Folds')
-    # plt.legend()
-    # fig.savefig('task2.png')
+    fig = plt.figure()
+    for i in range(len(dropout)):
+        plt.plot(Ntraining, avg_fvafs_validation[:, i], label='validation')
+    plt.ylabel('Validation FVAF')
+    plt.xlabel('Training Folds')
+    plt.title('Validation FVAF vs Training Folds')
+    plt.legend(title='Dropout')
+    fig.savefig('task2.png')
 
 
 if __name__ == '__main__':
