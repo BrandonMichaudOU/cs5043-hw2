@@ -20,7 +20,7 @@ def make_plot():
     for i, r in enumerate(rotations):
         for j, n in enumerate(Ntraining):
             # Open experiment results and add them to arrays
-            with open(f'base__ddtheta_1_hidden_500_250_125_75_36_17_JI_rotation_{r}_Ntraining_{n}_results.pkl', "rb") as fp:
+            with open(f'results/base__ddtheta_1_hidden_500_250_125_75_36_17_JI_rotation_{r}_Ntraining_{n}_results.pkl', "rb") as fp:
                 results = pickle.load(fp)
                 fvafs_training[i][j] = results['predict_training_fvaf']
                 fvafs_validation[i][j] = results['predict_validation_fvaf']
