@@ -18,5 +18,6 @@
 . /home/fagg/tf_setup.sh
 conda activate tf
 
-python hw2_base.py --project 'hw2' --exp_type 'l2' --output_type 'ddtheta' --predict_dim 1 --exp_index $SLURM_ARRAY_TASK_ID --lrate 0.0001 --activation_hidden 'elu' --activation_out 'linear' --hidden 500 250 125 75 36 17 --epochs 100 -vv
+#python hw2_base.py --project 'hw2' --exp_type 'l2' --output_type 'ddtheta' --predict_dim 1 --exp_index $SLURM_ARRAY_TASK_ID --lrate 0.0001 --activation_hidden 'elu' --activation_out 'linear' --hidden 500 250 125 75 36 17 --epochs 100 -vv
+python task3.py
 # --min_delta 0.001 --patience 25
