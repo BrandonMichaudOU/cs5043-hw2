@@ -101,10 +101,22 @@ def exp_type_to_hyperparameters(args):
     :param args: ArgumentParser
     :return: Hyperparameter set (in dictionary form)
     '''
-    if args.exp_type == 'bmi':
+    if args.exp_type == 'base':
         p = {
-            'rotation': range(20),
+            'rotation': range(0, 20, 2),
             'Ntraining': [1, 2, 3, 4, 5, 9, 13, 18]
+        }
+    elif args.exp_type == 'dropout':
+        p = {
+            'rotation': range(0, 20, 2),
+            'Ntraining': [1, 2, 3, 4, 5, 9, 13, 18],
+            'dropout': [0.1, 0.3, 0.5, 0.7, 0.9]
+        }
+    elif args.exp_type == 'l2':
+        p = {
+            'rotation': range(0, 20, 2),
+            'Ntraining': [1, 2, 3, 4, 5, 9, 13, 18],
+            'l2': [0.001, 0.01, 0.1, 1, 10]
         }
     else: 
         assert False, "Bad exp_type"
@@ -234,8 +246,10 @@ def execute_exp(args=None):
     rmse = tf.keras.metrics.RootMeanSquaredError()
 
     # Build the model
-    model = deep_network_basic(ins_training.shape[1], args.hidden, outs_training.shape[1], activation=args.activation_hidden,
-                               activation_output=args.activation_out, lrate=args.lrate, metrics=[fvaf, rmse])
+    model = deep_network_regularization(ins_training.shape[1], args.hidden, outs_training.shape[1],
+                                        activation=args.activation_hidden, activation_output=args.activation_out,
+                                        lrate=args.lrate, dropout=args.dropout, l1=args.l1, l2=args.l2,
+                                        metrics=[fvaf, rmse])
     
     # Report if verbosity is turned on
     if args.verbose >= 1:
@@ -316,7 +330,7 @@ def create_parser():
     parser.add_argument('--Ntraining', type=int, default=2, help='Number of training folds')
 
     # Meta experiment details
-    parser.add_argument('--exp_type', type=str, default='bmi', help='High level name for this set of experiments; selects the specific Cartesian product')
+    parser.add_argument('--exp_type', type=str, default='base', help='High level name for this set of experiments; selects the specific Cartesian product')
     parser.add_argument('--exp_index', type=int, default=None, help='Experiment index for Cartesian experiment')
     parser.add_argument('--label', type=str, default='', help='Label used for fnames and WandB')
 
@@ -325,8 +339,8 @@ def create_parser():
 
     # Don't use these for HW 1
     parser.add_argument('--dropout', type=float, default=None, help="Dropout rate")
-    parser.add_argument('--L1_regularization', '--l1', type=float, default=None, help="L1 regularization factor (only active if no L2)")
-    parser.add_argument('--L2_regularization', '--l2', type=float, default=None, help="L2 regularization factor")
+    parser.add_argument('--l1', type=float, default=None, help="L1 regularization factor (only active if no L2)")
+    parser.add_argument('--l2', type=float, default=None, help="L2 regularization factor")
 
     # Early stopping
     parser.add_argument('--min_delta', type=float, default=0.001, help="Minimum delta for early termination")
