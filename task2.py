@@ -31,8 +31,8 @@ def make_plot():
 
     # Create line plot
     fig = plt.figure()
-    for i in range(len(dropout)):
-        plt.plot(Ntraining, avg_fvafs_validation[:, i], label='validation')
+    for i, d in enumerate(dropout):
+        plt.plot(Ntraining, avg_fvafs_validation[:, i], label=f'{d}')
     plt.ylabel('Validation FVAF')
     plt.xlabel('Training Folds')
     plt.title('Validation FVAF vs Training Folds')
