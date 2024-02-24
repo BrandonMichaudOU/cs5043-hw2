@@ -104,18 +104,18 @@ def exp_type_to_hyperparameters(args):
     if args.exp_type == 'base':
         p = {
             'rotation': range(0, 20, 2),
-            'Ntraining': [1, 2, 3, 4, 5, 9, 13, 18]
+            'Ntraining': [1, 2, 4, 6, 9, 13, 18]
         }
     elif args.exp_type == 'dropout':
         p = {
             'rotation': range(0, 20, 2),
-            'Ntraining': [1, 2, 3, 4, 5, 9, 13, 18],
+            'Ntraining': [1, 2, 4, 6, 9, 13, 18],
             'dropout': [0.1, 0.3, 0.5, 0.7, 0.9]
         }
     elif args.exp_type == 'l2':
         p = {
             'rotation': range(0, 20, 2),
-            'Ntraining': [1, 2, 3, 4, 5, 9, 13, 18],
+            'Ntraining': [1, 2, 4, 6, 9, 13, 18],
             'l2': [0.001, 0.01, 0.1, 1, 10]
         }
     else: 
