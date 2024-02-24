@@ -9,7 +9,7 @@ def make_plot():
     Lines for training, validation, and test sets shown
     '''
     # Values used for task 1
-    rotations = range(0, 20, 2)
+    rotations = list(range(0, 20, 2))
     Ntraining = [1, 2, 4, 6, 9, 13, 18]
 
     # Create numpy arrays for each set
