@@ -110,7 +110,7 @@ def exp_type_to_hyperparameters(args):
         p = {
             'rotation': range(0, 20, 2),
             'Ntraining': [1, 2, 4, 6, 9, 13, 18],
-            'dropout': [0.1, 0.3, 0.5, 0.7, 0.9]
+            'dropout': [0.05, 0.2, 0.35, 0.5, 0.65]
         }
     elif args.exp_type == 'l2':
         p = {
