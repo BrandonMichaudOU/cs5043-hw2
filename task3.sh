@@ -13,7 +13,7 @@
 #SBATCH --mail-user=brandondmichaud@ou.edu
 #SBATCH --mail-type=ALL
 #SBATCH --chdir=/home/cs504319/cs5043-hw2
-#SBATCH --array=32,52,60,83,84,102,113,119,122,162,188,197,201,221
+#SBATCH --array=102,119,201
 
 . /home/fagg/tf_setup.sh
 conda activate tf
