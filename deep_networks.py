@@ -60,7 +60,8 @@ def deep_network_regularization(n_inputs, hidden_layers, n_output, activation='e
     for i, n_hidden in enumerate(hidden_layers):
         model.add(Dense(n_hidden, use_bias=True, name='Hidden_%d' % i, activation=activation,
                         kernel_regularizer=tf.keras.regularizers.l1_l2(l1=l1, l2=l2)))
-        model.add(Dropout(rate=dropout, name='Dropout_%d' % i))
+        if dropout is not None:
+            model.add(Dropout(rate=dropout, name='Dropout_%d' % i))
     model.add(Dense(n_output, use_bias=True, name='Output', activation=activation_output))
 
     # Optimizer
