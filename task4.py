@@ -38,7 +38,7 @@ def make_plot():
     avg_fvafs_validation_l2 = np.average(fvafs_validation_l2, axis=0)
 
     best_avg_fvafs_validation_dropout = np.argmax(avg_fvafs_validation_dropout, axis=1)
-    print(np.shape(best_avg_fvafs_validation_dropout))
+    print(best_avg_fvafs_validation_dropout)
 
     # Create line plot
     # fig = plt.figure()
