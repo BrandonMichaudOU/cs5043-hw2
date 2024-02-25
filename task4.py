@@ -76,6 +76,7 @@ def make_plot():
     plt.ylabel('Testing FVAF')
     plt.xlabel('Training Folds')
     plt.title('Testing FVAF vs Training Folds')
+    plt.legend()
     fig.savefig('task4.png')
 
 
