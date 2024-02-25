@@ -37,18 +37,46 @@ def make_plot():
     avg_fvafs_validation_dropout = np.average(fvafs_validation_dropout, axis=0)
     avg_fvafs_validation_l2 = np.average(fvafs_validation_l2, axis=0)
 
+    # Find maximum validation FVAF for each training fold size
     best_avg_fvafs_validation_dropout = np.argmax(avg_fvafs_validation_dropout, axis=1)
-    print(best_avg_fvafs_validation_dropout)
+    best_avg_fvafs_validation_l2 = np.argmax(avg_fvafs_validation_l2, axis=1)
+
+    # Create numpy arrays for each set
+    fvafs_testing_base = np.empty((len(rotations), len(Ntraining)))
+    fvafs_testing_dropout = np.empty((len(rotations), len(Ntraining)))
+    fvafs_testing_l2 = np.empty((len(rotations), len(Ntraining)))
+
+    # Loop over each experiment
+    for i, r in enumerate(rotations):
+        for j, n in enumerate(Ntraining):
+            with open(f'results/base__ddtheta_1_hidden_500_250_125_75_36_17_JI_rotation_{r}_Ntraining_{n}_results.pkl', "rb") as fp:
+                results = pickle.load(fp)
+                fvafs_testing_base[i][j] = results['predict_testing_fvaf']
+
+            with open(f'results/dropout__ddtheta_1_hidden_500_250_125_75_36_17_JI_rotation_{r}_Ntraining_{n}_'
+                      f'dropout_{dropout[best_avg_fvafs_validation_dropout[j]]}_results.pkl', "rb") as fp:
+                results = pickle.load(fp)
+                fvafs_testing_dropout[i][j] = results['predict_testing_fvaf']
+
+            with open(f'results/l2__ddtheta_1_L2_{l2[best_avg_fvafs_validation_l2[j]]:.6f}_hidden_500_250_125_75_36_17_JI_'
+                      f'rotation_{r}_Ntraining_{n}_l2_{l2[best_avg_fvafs_validation_l2[j]]}_results.pkl', "rb") as fp:
+                results = pickle.load(fp)
+                fvafs_testing_l2[i][j] = results['predict_testing_fvaf']
+
+    # Compute average FVAF for each training set size for each set
+    avg_fvafs_testing_base = np.average(fvafs_testing_base, axis=0)
+    avg_fvafs_testing_dropout = np.average(fvafs_testing_dropout, axis=0)
+    avg_fvafs_testing_l2 = np.average(fvafs_testing_l2, axis=0)
 
     # Create line plot
-    # fig = plt.figure()
-    # for i, l in enumerate(l2):
-    #     plt.plot(Ntraining, avg_fvafs_validation[:, i], label=f'{l}')
-    # plt.ylabel('Validation FVAF')
-    # plt.xlabel('Training Folds')
-    # plt.title('Validation FVAF vs Training Folds')
-    # plt.legend(title='L2')
-    # fig.savefig('task3.png')
+    fig = plt.figure()
+    plt.plot(Ntraining, avg_fvafs_testing_base, label='Base')
+    plt.plot(Ntraining, avg_fvafs_testing_dropout, label='Dropout')
+    plt.plot(Ntraining, avg_fvafs_testing_l2, label='L2')
+    plt.ylabel('Testing FVAF')
+    plt.xlabel('Training Folds')
+    plt.title('Testing FVAF vs Training Folds')
+    fig.savefig('task4.png')
 
 
 if __name__ == '__main__':
