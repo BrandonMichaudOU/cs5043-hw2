@@ -82,23 +82,27 @@ def make_plot():
 
     # Run t-tests
     print(f't-tests for 1 training fold')
-    print(np.mean(fvafs_testing_base[:][0]) - np.mean(fvafs_testing_dropout[:][0]))
     t_base_dropout_1 = scipy.stats.ttest_rel(fvafs_testing_base[:][0], fvafs_testing_dropout[:][0])
-    print(f'For base and dropout pair\npvalue = {t_base_dropout_1.pvalue}, t-stat = {t_base_dropout_1.statistic}')
+    print(f'For base and dropout pair\npvalue = {t_base_dropout_1.pvalue}, '
+          f'diff = {np.abs(np.mean(fvafs_testing_base[:][0]) - np.mean(fvafs_testing_dropout[:][0]))}')
     t_base_l2_1 = scipy.stats.ttest_rel(fvafs_testing_base[:][0], fvafs_testing_l2[:][0])
-    print(f'For base and dropout pair\npvalue = {t_base_l2_1.pvalue}, t-stat = {t_base_l2_1.statistic}')
+    print(f'For base and dropout pair\npvalue = {t_base_l2_1.pvalue}, '
+          f'diff = {np.abs(np.mean(fvafs_testing_base[:][0]) - np.mean(fvafs_testing_l2[:][0]))}')
     t_dropout_l2_1 = scipy.stats.ttest_rel(fvafs_testing_dropout[:][0], fvafs_testing_l2[:][0])
-    print(f'For base and dropout pair\npvalue = {t_dropout_l2_1.pvalue}, t-stat = {t_dropout_l2_1.statistic}')
+    print(f'For base and dropout pair\npvalue = {t_dropout_l2_1.pvalue}, '
+          f'diff = {np.abs(np.mean(fvafs_testing_dropout[:][0]) - np.mean(fvafs_testing_l2[:][0]))}')
 
-    print(f't-tests for 18 training folds')
+    print(f'\nt-tests for 18 training folds')
     t_base_dropout_18 = scipy.stats.ttest_rel(fvafs_testing_base[:][6], fvafs_testing_dropout[:][6])
-    print(f'For base and dropout pair\npvalue = {t_base_dropout_18.pvalue}, t-stat = {t_base_dropout_18.statistic}')
+    print(f'For base and dropout pair\npvalue = {t_base_dropout_18.pvalue}, '
+          f'diff = {np.abs(np.mean(fvafs_testing_base[:][6]) - np.mean(fvafs_testing_dropout[:][6]))}')
     t_base_l2_18 = scipy.stats.ttest_rel(fvafs_testing_base[:][6], fvafs_testing_l2[:][6])
-    print(f'For base and dropout pair\npvalue = {t_base_l2_18.pvalue}, t-stat = {t_base_l2_18.statistic}')
+    print(f'For base and dropout pair\npvalue = {t_base_l2_18.pvalue}, '
+          f'diff = {np.abs(np.mean(fvafs_testing_base[:][6]) - np.mean(fvafs_testing_l2[:][6]))}')
     t_dropout_l2_18 = scipy.stats.ttest_rel(fvafs_testing_dropout[:][6], fvafs_testing_l2[:][6])
-    print(f'For base and dropout pair\npvalue = {t_dropout_l2_18.pvalue}, t-stat = {t_dropout_l2_18.statistic}')
-
-
+    print(f'For base and dropout pair\npvalue = {t_dropout_l2_18.pvalue}, '
+          f'diff = {np.abs(np.mean(fvafs_testing_dropout[:][6]) - np.mean(fvafs_testing_l2[:][6]))}')
+    
 
 if __name__ == '__main__':
     make_plot()
