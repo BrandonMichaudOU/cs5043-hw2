@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task 16
 #SBATCH --mem=1G
-#SBATCH --output=outputs/hw2_%j_stdout.txt
+#SBATCH --output=t-tests.txt
 #SBATCH --error=outputs/hw2_%j_stderr.txt
 #SBATCH --time=00:05:00
 #SBATCH --job-name=hw2

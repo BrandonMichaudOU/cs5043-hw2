@@ -81,13 +81,22 @@ def make_plot():
     fig.savefig('task4.png')
 
     # Run t-tests
+    print(f't-tests for 1 training fold')
+    print(np.mean(fvafs_testing_base[:][0]) - np.mean(fvafs_testing_dropout[:][0]))
     t_base_dropout_1 = scipy.stats.ttest_rel(fvafs_testing_base[:][0], fvafs_testing_dropout[:][0])
+    print(f'For base and dropout pair\npvalue = {t_base_dropout_1.pvalue}, t-stat = {t_base_dropout_1.statistic}')
     t_base_l2_1 = scipy.stats.ttest_rel(fvafs_testing_base[:][0], fvafs_testing_l2[:][0])
+    print(f'For base and dropout pair\npvalue = {t_base_l2_1.pvalue}, t-stat = {t_base_l2_1.statistic}')
     t_dropout_l2_1 = scipy.stats.ttest_rel(fvafs_testing_dropout[:][0], fvafs_testing_l2[:][0])
-    print(t_base_dropout_1.pvalue)
+    print(f'For base and dropout pair\npvalue = {t_dropout_l2_1.pvalue}, t-stat = {t_dropout_l2_1.statistic}')
+
+    print(f't-tests for 18 training folds')
     t_base_dropout_18 = scipy.stats.ttest_rel(fvafs_testing_base[:][6], fvafs_testing_dropout[:][6])
+    print(f'For base and dropout pair\npvalue = {t_base_dropout_18.pvalue}, t-stat = {t_base_dropout_18.statistic}')
     t_base_l2_18 = scipy.stats.ttest_rel(fvafs_testing_base[:][6], fvafs_testing_l2[:][6])
+    print(f'For base and dropout pair\npvalue = {t_base_l2_18.pvalue}, t-stat = {t_base_l2_18.statistic}')
     t_dropout_l2_18 = scipy.stats.ttest_rel(fvafs_testing_dropout[:][6], fvafs_testing_l2[:][6])
+    print(f'For base and dropout pair\npvalue = {t_dropout_l2_18.pvalue}, t-stat = {t_dropout_l2_18.statistic}')
 
 
 
