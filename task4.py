@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
+import scipy
 
 
 def make_plot():
@@ -78,6 +79,9 @@ def make_plot():
     plt.title('Testing FVAF vs Training Folds')
     plt.legend()
     fig.savefig('task4.png')
+
+    # Run t-tests
+    print(scipy.stats.ttest_rel(fvafs_testing_base[:][0], fvafs_testing_dropout[:][0]))
 
 
 if __name__ == '__main__':
