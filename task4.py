@@ -81,6 +81,7 @@ def make_plot():
     fig.savefig('task4.png')
 
     # Run t-tests
+    print(avg_fvafs_testing_base[0] - avg_fvafs_testing_dropout[0])
     print(f't-tests for 1 training fold')
     t_base_dropout_1 = scipy.stats.ttest_rel(fvafs_testing_base[:][0], fvafs_testing_dropout[:][0])
     print(f'For base and dropout pair\npvalue = {t_base_dropout_1.pvalue}, '
