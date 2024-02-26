@@ -1,15 +1,14 @@
-t-tests for 1 training fold
 For base and dropout pair
-pvalue = 0.7886518208793745, diff = 0.0034561440650553443
-For base and dropout pair
-pvalue = 0.9314236863574593, diff = 0.0012259779821665595
-For base and dropout pair
-pvalue = 0.9203211801638789, diff = 0.002230166082888785
+pvalue = 0.018013558932437945, diff = 0.046188030293533355
+For base and L2 pair
+pvalue = 0.1322060163556211, diff = 0.01161935457222324
+For dropout and L2 pair
+pvalue = 0.006696319795315088, diff = 0.057807384865756595
 
 t-tests for 18 training folds
 For base and dropout pair
-pvalue = 0.08764471332956675, diff = 0.016550098991920503
-For base and dropout pair
-pvalue = 0.005933316936536458, diff = 0.01773197823621686
-For base and dropout pair
-pvalue = 0.9019664868638033, diff = 0.0011818792442963577
+pvalue = 0.3951816561058489, diff = 0.007099976032674649
+For base and L2 pair
+pvalue = 0.06896612274321404, diff = 0.013133400390907046
+For dropout and L2 pair
+pvalue = 0.08148607614247415, diff = 0.020233376423581695
