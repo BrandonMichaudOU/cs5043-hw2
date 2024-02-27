@@ -13,11 +13,9 @@
 #SBATCH --mail-user=brandondmichaud@ou.edu
 #SBATCH --mail-type=ALL
 #SBATCH --chdir=/home/cs504319/cs5043-hw2
-# --array=102,119,201
+#SBATCH --array=102,119,201
 
 . /home/fagg/tf_setup.sh
 conda activate tf
 
-#python hw2_base.py --project 'hw2' --exp_type 'l2' --output_type 'ddtheta' --predict_dim 1 --exp_index $SLURM_ARRAY_TASK_ID --lrate 0.0001 --activation_hidden 'elu' --activation_out 'linear' --hidden 500 250 125 75 36 17 --epochs 100 -vv
-python task3.py
-# --min_delta 0.001 --patience 25
+python hw2_base.py --project 'hw2' --exp_type 'l2' --output_type 'ddtheta' --predict_dim 1 --exp_index $SLURM_ARRAY_TASK_ID --lrate 0.0001 --activation_hidden 'elu' --activation_out 'linear' --hidden 500 250 125 75 36 17 --epochs 100 -vv

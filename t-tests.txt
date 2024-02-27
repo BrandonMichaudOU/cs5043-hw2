@@ -1,3 +1,4 @@
+t-tests for 1 training fold
 For base and dropout pair
 pvalue = 0.018013558932437945, diff = 0.046188030293533355
 For base and L2 pair
